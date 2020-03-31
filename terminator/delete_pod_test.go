@@ -52,7 +52,7 @@ func (suite *DeletePodTerminatorSuite) TestTerminate() {
 
 	victim := util.NewPod("default", "foo", v1.PodRunning)
 
-	err := terminator.Terminate(victim)
+	err := terminator.Terminate(context.TODO(), victim)
 	suite.Require().NoError(err)
 
 	suite.AssertLog(logOutput, log.DebugLevel, "calling deletePod endpoint", log.Fields{"namespace": "default", "name": "foo"})
